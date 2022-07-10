@@ -1,8 +1,14 @@
 import NewMeetupForm from "../../components/meetups/NewMeetupForm";
 
 const NewMeetupPage=()=>{
+
+    function onSubmitHandler(entries){
+        console.log(entries);
+    }
+
+
     return(
-        <NewMeetupForm/>
+        <NewMeetupForm onAddMeetup={onSubmitHandler}/>
     )
 }
 

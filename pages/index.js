@@ -4,7 +4,7 @@ const DummyMeetups=[
     {
         id:"m1",
         title:"React Meetup",
-        image:"",
+        image:"https://media.istockphoto.com/photos/architecture-of-lalitpur-metropolitan-city-the-third-largest-city-of-picture-id1013294000?s=2048x2048",
         address:"Bojepokhari,Imadole",
         description:"This is a first meetup!"
     }
