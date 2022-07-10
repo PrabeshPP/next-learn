@@ -12,7 +12,6 @@ function MeetupItem(props) {
 
   return (
     <li className={classes.item}>
-      <Card>
         <div className={classes.image}>
           <img src={props.image} alt={props.title} />
         </div>
@@ -23,7 +22,6 @@ function MeetupItem(props) {
         <div className={classes.actions}>
           <button onClick={showDetailsHandler}>Show Details</button>
         </div>
-      </Card>
     </li>
   );
 }
