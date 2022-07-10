@@ -17,10 +17,37 @@ const DummyMeetups=[
     }
 ]
 
-const HomePage=()=>{
+const HomePage=(props)=>{
     return (
-        <MeetupList meetups={DummyMeetups}/>
+        <MeetupList meetups={props.meetups}/>
     )
+}
+
+/*
+
+we should only use getServerSideProps,if our website data don't change frequently.
+As well as,if we don't need request and response.
+
+*/
+
+// export async function getServerSideProps(context){
+//         const req=context.req;
+//         const res=context.res;
+//         return {
+//             props:{
+//                 meetups:DummyMeetups
+//             }
+//         }
+// }
+
+export async function getStaticProps(){
+    //fetch data
+    return {
+        props:{
+            meetups:DummyMeetups
+        },
+        revalidate:1
+    }
 }
 
 export default HomePage;
