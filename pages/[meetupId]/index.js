@@ -20,7 +20,7 @@ const MeetupDetail = (props) => {
     </Head>
       <MeetupDetails
       imgSrc={props.meetupData.image}
-      title={props.meetupData.title}
+      title={props?.meetupData.title}
       address={props.meetupData.address}
       description={props.meetupData.description}
     />
@@ -42,33 +42,33 @@ export async function getStaticPaths() {
   }) );
 
   return {
-    fallback:true,
+    fallback:false,
     paths: meetupIdData
   };
 }
 
 export async function getStaticProps(context) {
   const meetupId = context.params.meetupId;
-  
-  
   const client = await MongoClient.connect(
     `mongodb+srv://prabesh:7Ygjh5U5Je9uUcNN@cluster0.gornro4.mongodb.net/meetup?retryWrites=true&w=majority`
   );
+
   const db = client.db();
   const meetUpsCollection = db.collection("meetups101");
   const result = await meetUpsCollection.findOne({
       _id:ObjectId(meetupId)
   });
 
-
+ 
 
   return {
     props: {
       meetupData:{
-        title:result.title,
+        _id:result._id.toString(),
         address:result.address,
         description:result.description,
-        image:result.image
+        image:result.image,
+        title:result.title,
       }
     },
   };
